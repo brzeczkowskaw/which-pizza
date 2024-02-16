@@ -3,11 +3,15 @@ import MainPage from './views/MainPage.vue'
 </script>
 
 <template>
-  <div>
-    <MainPage msg="Vite + Vue" />
-  </div>
+  <v-app>
+    <div>
+      <MainPage />
+    </div>
+  </v-app>
 </template>
 
 <style lang="scss" scoped>
-
+.v-application {
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+}
 </style>
