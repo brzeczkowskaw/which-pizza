@@ -8,7 +8,6 @@
       "skipLibCheck": true,
       "paths": {
         //Direct
-  
         //Sub Locations
         "@/*": ["*"],
         "@components/*": ["components/*"],
@@ -29,6 +28,11 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
+    "types": ["vuetify"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/vuetify/types"
+    ],
     "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
