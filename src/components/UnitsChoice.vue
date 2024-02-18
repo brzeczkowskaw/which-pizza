@@ -20,6 +20,7 @@ const currencyItems = computed(() => {
               :items="currencyItems" 
               label="Your currency"
               item-title="code"
+              item-value="code"
               variant="filled"
               density="compact"
               class="selector-box"

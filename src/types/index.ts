@@ -17,11 +17,6 @@ export interface Pizza {
 }
 
 export interface Units {
-  currency: Currency;
+  currency: string;
   measure: string;
-}
-
-export interface Currency {
-  code: string;
-  country: string;
 }
