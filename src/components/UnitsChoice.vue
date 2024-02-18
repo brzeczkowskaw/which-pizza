@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { usePizzaStore } from  '../stores/pizza'
 
 const pizzaStore = usePizzaStore();
@@ -26,7 +26,7 @@ const currencyItems = computed(() => {
               class="selector-box"
             >
               <template v-slot:item="{ props, item }">
-                <v-list-item v-bind="props" :subtitle="item.raw.country"></v-list-item>
+                <v-list-item v-bind="props" :subtitle="item.raw.country" />
               </template>
             </v-autocomplete>
             <v-select 

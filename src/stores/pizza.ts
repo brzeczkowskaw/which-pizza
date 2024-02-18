@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { PizzaState } from "../types";
+import { PizzaState, Currency } from "../types";
 import axios from "axios";
 
 export const usePizzaStore = defineStore("pizzaStore", {
@@ -29,7 +29,7 @@ export const usePizzaStore = defineStore("pizzaStore", {
       currency: "USD",
       measure: "cm",
     },
-    currencies: null,
+    currencies: [],
   }),
   actions: {
     clearPizzasData() {
@@ -65,7 +65,7 @@ export const usePizzaStore = defineStore("pizzaStore", {
           return {
             code: key,
             country: value,
-          };
+          } as Currency;
         });
       } catch (e: any) {
         console.error(e.message);

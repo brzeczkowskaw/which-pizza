@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import PizzaInput from '../components/PizzaInput.vue'
 import CompareButton from '../components/CompareButton.vue'
 import UnitsChoice from '../components/UnitsChoice.vue'
