@@ -1,5 +1,6 @@
-import { defineStore } from 'pinia';
-import { PizzaState } from '../types'
+import { defineStore } from "pinia";
+import { PizzaState } from "../types";
+import axios from "axios";
 
 export const usePizzaStore = defineStore("pizzaStore", {
   state: (): PizzaState => ({
@@ -23,7 +24,15 @@ export const usePizzaStore = defineStore("pizzaStore", {
     ],
     isComparingPizzas: false,
     isResultShown: false,
-    cheaperPizzaIndex: null
+    cheaperPizzaIndex: null,
+    units: {
+      currency: {
+        code: "USD",
+        country: "United States Dollar",
+      },
+      measure: "cm",
+    },
+    currencies: null,
   }),
   actions: {
     clearPizzasData() {
@@ -49,6 +58,21 @@ export const usePizzaStore = defineStore("pizzaStore", {
       this.isResultShown = false;
       this.cheaperPizzaIndex = null;
     },
+    async getCurrencies() {
+      try {
+        const { data } = await axios.get(
+          "https://openexchangerates.org/api/currencies.json"
+        );
+        const currencyList = data;
+        this.currencies = Object.entries(currencyList).map(([key, value]) => {
+          return {
+            code: key,
+            country: value,
+          };
+        });
+      } catch (e: any) {
+        console.error(e.message);
+      }
+    },
   },
 });
-

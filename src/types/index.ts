@@ -3,6 +3,8 @@ export interface PizzaState {
   isComparingPizzas: Boolean;
   isResultShown: Boolean;
   cheaperPizzaIndex: number | null;
+  units: Units;
+  currencies: any;
 }
 
 export interface Pizza {
@@ -12,4 +14,14 @@ export interface Pizza {
   pricePerCentimeter: number;
   totalArea: number;
   totalPrice: number;
+}
+
+export interface Units {
+  currency: Currency;
+  measure: string;
+}
+
+export interface Currency {
+  code: string;
+  country: string;
 }

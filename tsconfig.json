@@ -28,12 +28,13 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "types": ["vuetify"],
+    "types": ["vuetify", "node"],
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/vuetify/types"
+      "./node_modules/vuetify/types",
+      "../node_modules/@types"
     ],
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "typings.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
   
