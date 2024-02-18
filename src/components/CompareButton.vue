@@ -43,7 +43,7 @@ function comparePizzas() {
     pizzaStore.isComparingPizzas = false;
     pizzaStore.isResultShown = true;
     pizzaStore.cheaperPizzaIndex = getCheaperPizzaIndex();
-  }, 1000)
+  }, 3000)
 }
 
 </script>
@@ -52,7 +52,7 @@ function comparePizzas() {
     <v-container class="px-4">
         <v-btn
           color="primary"
-          style="width: -webkit-fill-available"
+          style="width: 52vw"
           class="px-2 mx-4"
           variant="elevated"
           :elevation="10"
