@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PizzaInput from '../components/PizzaInput.vue'
+import CompareButton from '../components/CompareButton.vue'
 import { usePizzaStore } from  '../stores/pizza'
 
 const pizzaStore = usePizzaStore();
@@ -15,7 +16,12 @@ const pizzaStore = usePizzaStore();
         </div>
         <v-row class="mt-1">
             <v-col v-for="(pizza, index) in pizzaStore.pizzas" :key="index" class="d-flex justify-space-around">
-                <PizzaInput :pizzaData="pizza" :pizza-number="index"></PizzaInput>
+                <PizzaInput :pizzaData="pizza" :pizza-index="index"></PizzaInput>
+            </v-col>
+        </v-row>
+        <v-row class="text-center">
+            <v-col class="px-5 mx-5">
+                <CompareButton />
             </v-col>
         </v-row>
     </v-container>

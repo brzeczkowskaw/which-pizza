@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { Pizza } from '../types'
+import { usePizzaStore } from  '../stores/pizza'
+import pluralize from 'pluralize'
+
+const pizzaStore = usePizzaStore();
 
 const props = defineProps({
   pizzaData: {
     type: Object as () => Pizza,
     required: true,
   },
-  pizzaNumber: {
+  pizzaIndex: {
     type: Number,
     required: true,
   }
@@ -16,27 +20,33 @@ const props = defineProps({
 const smallerThanOne = [(value: number) => !!value || "Should be at least one"]
 
 const pizzaNumberCount = computed(() => {
-  return props.pizzaNumber + 1;
+  return props.pizzaIndex + 1;
 })
 
-function decrement() {
+function decrementPizzaSize() {
   if (props.pizzaData.diameter === 0) return;
   props.pizzaData.diameter = --props.pizzaData.diameter;
 }
 
-function increment() {
+function incrementPizzaSize() {
   if (props.pizzaData.diameter === 80) return;
   props.pizzaData.diameter = ++props.pizzaData.diameter;
 }
 
+const getCardColor = computed((): string => {
+  if (!pizzaStore.isResultShown) return '';
+  if (pizzaStore.cheaperPizzaIndex === 3) return 'blue';
+  return props.pizzaIndex === pizzaStore.cheaperPizzaIndex ? 'green' : 'red';
+})
+
 </script>
 
 <template>
-    <v-card class="pizza-card text-center" variant="elevated" elevation="8" style="max-width: 100vw">
+    <v-card class="pizza-card text-center" variant="elevated" elevation="8" style="width: 40vw; height: 70vh" :color="getCardColor">
       <v-card-title class="justify-center">
-        Pizza {{ pizzaNumberCount }}
+        Pizza option {{ pizzaNumberCount }}
       </v-card-title>
-      <v-card-text>
+      <v-card-text v-if="!pizzaStore.isResultShown">
         <v-row class="px-2 pt-2 mb-n4">
           <v-col class="ma-0 pa-0">
             <div class="text-start">
@@ -64,7 +74,7 @@ function increment() {
                   icon="mdi-minus"
                   color="secondary"
                   class="pa-0 ma-0"
-                  @click="decrement"
+                  @click="decrementPizzaSize"
                 ></v-btn>
               </template>
               <template v-slot:append>
@@ -74,7 +84,7 @@ function increment() {
                   icon="mdi-plus"
                   color="secondary"
                   class="pa-0 ma-0"
-                  @click="increment"
+                  @click="incrementPizzaSize"
                 ></v-btn>
               </template>
             </v-slider>
@@ -117,6 +127,20 @@ function increment() {
               price per pizza
             </span>
           </div>
+        </v-row>
+      </v-card-text>
+      <v-card-text v-else class="pa-4 mx-3">
+        <v-row>
+          <b>{{ pluralize('pizza', props.pizzaData.amount, true) }} for {{ props.pizzaData.pricePerPizza }}$ each </b>
+        </v-row>
+        <v-row>
+          <b>Total price: </b> {{ props.pizzaData.totalPrice }}$
+        </v-row>
+        <v-row>
+          <b>Total area: </b> {{ props.pizzaData.totalArea.toFixed(2) }}cm&sup2;
+        </v-row>
+        <v-row>
+          <b>Price per cm&sup2;: </b> {{ props.pizzaData.pricePerCentimeter.toFixed(2) }}$
         </v-row>
       </v-card-text>
     </v-card>
