@@ -1,10 +1,10 @@
 export interface PizzaState {
   pizzas: Pizza[];
-  isComparingPizzas: Boolean;
-  isResultShown: Boolean;
+  isComparingPizzas: boolean;
+  isResultShown: boolean;
   cheaperPizzaIndex: number | null;
   units: Units;
-  currencies: any;
+  currencies: Currency[];
 }
 
 export interface Pizza {
@@ -19,4 +19,9 @@ export interface Pizza {
 export interface Units {
   currency: string;
   measure: string;
+}
+
+export interface Currency {
+  code: string;
+  country: string;
 }
