@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { Pizza } from '../types'
 import { usePizzaStore } from  '../stores/pizza'
 import pluralize from 'pluralize'
@@ -21,10 +21,8 @@ const props = defineProps({
   }
 })
 
-const smallerThanOne = [(value: number) => !!value || "Should be at least one"];
-
 const measurUnit = computed(() => pizzaStore.units.measure);
-const currencyUnit = computed(() => pizzaStore.units.currency)
+const currencyUnit = computed(() => pizzaStore.units.currency);
 
 const pizzaNumberCount = computed(() => {
   return props.pizzaIndex + 1;
@@ -112,7 +110,6 @@ const getCardColor = computed((): string => {
                 variant="underlined" 
                 style="width: 50px"
                 class="mr-2"
-                :rules="smallerThanOne"
                 :min="1"
               />
               <span class="subheading font-weight-light me-2 mt-3 pt-n3 ml-1">
@@ -131,7 +128,6 @@ const getCardColor = computed((): string => {
                 variant="underlined" 
                 style="width: 50px"
                 class="mr-2"
-                :rules="smallerThanOne"
                 :min="1"
               />
               <span class="subheading font-weight-light me-2 mt-3 pt-n3 ml-1">

@@ -7,8 +7,6 @@
       "lib": ["ES2020", "DOM", "DOM.Iterable"],
       "skipLibCheck": true,
       "paths": {
-        //Direct
-        //Sub Locations
         "@/*": ["*"],
         "@components/*": ["components/*"],
         "@pages/*": ["@Pages/*"],

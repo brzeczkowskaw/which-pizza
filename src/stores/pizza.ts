@@ -26,10 +26,7 @@ export const usePizzaStore = defineStore("pizzaStore", {
     isResultShown: false,
     cheaperPizzaIndex: null,
     units: {
-      currency: {
-        code: "USD",
-        country: "United States Dollar",
-      },
+      currency: "USD",
       measure: "cm",
     },
     currencies: null,

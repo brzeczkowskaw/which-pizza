@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { usePizzaStore } from  '../stores/pizza'
 import { countCircleArea, countCostPerSquareCm } from '../helpers/counting'
 
@@ -12,6 +12,10 @@ const firstPizzaPrice = computed(() => pizzaStore.pizzas[0].pricePerPizza)
 const secondPizzaDiameter = computed(() => pizzaStore.pizzas[1].diameter) 
 const secondPizzaAmount = computed(() => pizzaStore.pizzas[1].amount)
 const secondPizzaPrice = computed(() => pizzaStore.pizzas[1].pricePerPizza);
+
+const isButtonDisabled = computed(() => {
+  return firstPizzaAmount.value < 1 || secondPizzaAmount.value < 1 || secondPizzaPrice.value < 1 || firstPizzaPrice.value < 1;
+})
 
 function getCheaperPizzaIndex() {
   const pizzaOnePerCentimeterPrice = countCostPerSquareCm(pizzaStore.pizzas[0].totalArea, pizzaStore.pizzas[0].totalPrice);
@@ -56,6 +60,7 @@ function comparePizzas() {
           class="px-2 mx-4"
           variant="elevated"
           :elevation="10"
+          :disabled="isButtonDisabled"
           :loading="pizzaStore.isComparingPizzas"
           @click="comparePizzas"
         >
