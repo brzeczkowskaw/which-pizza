@@ -46,7 +46,7 @@ const getCardColor = computed((): string => {
 </script>
 
 <template>
-    <v-card class="pizza-card text-center mx-3" variant="elevated" elevation="20" style="width: 25vw; height: 60vh" :color="getCardColor">
+    <v-card class="pizza-card text-center mx-3" variant="elevated" elevation="20" :color="getCardColor">
       <div v-if="pizzaStore.isComparingPizzas">
         <lottie-player autoplay loop :src="animationLoading" />
       </div>
@@ -166,4 +166,15 @@ const getCardColor = computed((): string => {
   -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
 }
+.pizza-card {
+  width: 25vw; 
+  height: 60vh;
+}
+@media(max-width: 850px) {
+  .pizza-card {
+    width: 75vw;
+    margin-bottom: 20px;
+  }
+}
+
 </style>

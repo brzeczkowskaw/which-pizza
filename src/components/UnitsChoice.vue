@@ -45,4 +45,12 @@ const currencyItems = computed(() => {
 .selector-box {
   max-width: 25vw;
 }
+@media(max-width: 650px) {
+  .selector-box {
+    min-width: 50vw;
+  }
+  ::v-deep .selector-box .v-input__details {
+    display: none;
+  }
+}
 </style>
