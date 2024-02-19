@@ -47,4 +47,10 @@ pizzaStore.getCurrencies();
     background: rgb(var(--v-theme-primary));  
     border: none;
 }
+
+@media(max-width: 400px) {
+  .header-area {
+    height: 33vh;
+  }
+}
 </style>

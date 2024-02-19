@@ -56,8 +56,7 @@ function comparePizzas() {
     <v-container class="px-4">
         <v-btn
           color="primary"
-          style="width: 52vw"
-          class="px-2 mx-4"
+          class="px-2 mx-4 compare-button"
           variant="elevated"
           :elevation="10"
           :disabled="isButtonDisabled"
@@ -70,4 +69,12 @@ function comparePizzas() {
 </template>
 
 <style style="scss" scoped>
+.compare-button {
+    width: 52vw;
+  }
+@media(max-width: 850px) {
+  .compare-button {
+    width: 70vw;
+  }
+}
 </style>
