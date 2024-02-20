@@ -137,13 +137,6 @@ const getCardColor = computed((): string => {
           </v-row>
         </v-card-text>
         <v-card-text v-else class="pa-4 mx-">
-          <v-row class="d-flex justify-center mb-2 mt-2">
-            <div v-for="n in props.pizzaData.amount" :key="n">
-              <v-icon class="mb-1" size="large" color="primary">
-                mdi-pizza
-              </v-icon>
-            </div>
-          </v-row>
           <v-row class="mb-1 d-flex justify-center">
             <b>{{ pluralize('pizza', props.pizzaData.amount, true) }} for {{ props.pizzaData.pricePerPizza }} {{ currencyUnit }} each </b>
           </v-row>
